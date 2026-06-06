@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Student Results</h2>
+<div id="output"></div>
+
+<script>
+const student = {
+    name: "Rahul",
+    marks: [80, 75, 90, 85, 70, 95]
+};
+
+let total = student.marks.reduce((a, b) => a + b, 0);
+let average = total / student.marks.length;
+
+document.getElementById("output").innerHTML =
+`
+Name: ${student.name}<br>
+Marks: ${student.marks.join(", ")}<br>
+Total: ${total}<br>
+Average: ${average.toFixed(2)}
+`;
+</script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Student Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        button {
+            margin: 5px;
+            padding: 8px 12px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Smart Student Management System</h2>
+
+<button onclick="displayStudents()">Display Students</button>
+<button onclick="averageMarks()">Average Marks</button>
+<button onclick="topStudents()">Top Students</button>
+<button onclick="departmentCount()">Department Count</button>
+<button onclick="vowelCount()">Vowel Count</button>
+
+<div id="output"></div>
+
+<script>
+
+let students = [
+    { id: 1, name: "Akhila", marks: 85, department: "CSE", attendance: 90 },
+    { id: 2, name: "Rahul", marks: 72, department: "ECE", attendance: 88 },
+    { id: 3, name: "Priya", marks: 95, department: "CSE", attendance: 92 },
+    { id: 4, name: "Kiran", marks: 60, department: "ME", attendance: 80 },
+    { id: 5, name: "Sneha", marks: 78, department: "ECE", attendance: 85 }
+];
+
+// 1. Display Student Details
+function displayStudents() {
+    let result = "";
+
+    for (let student of students) {
+        for (let key in student) {
+            result += key + ": " + student[key] + "<br>";
+        }
+        result += "<hr>";
+    }
+
+    document.getElementById("output").innerHTML = result;
+}
+
+// 2. Calculate Average Marks
+function averageMarks() {
+    let total = 0;
+
+    for (let student of students) {
+        total += student.marks;
+    }
+
+    let avg = total / students.length;
+
+    document.getElementById("output").innerHTML =
+        "Average Marks: " + avg;
+}
+
+// 3. Filter Top Students (marks > 75)
+function topStudents() {
+    let result = "Top Students:<br>";
+
+    for (let student of students) {
+        if (student.marks > 75) {
+            result += student.name + "<br>";
+        }
+    }
+
+    document.getElementById("output").innerHTML = result;
+}
+
+// 4. Department-wise Student Count
+function departmentCount() {
+    let deptCount = {};
+
+    for (let student of students) {
+        let dept = student.department;
+        deptCount[dept] = (deptCount[dept] || 0) + 1;
+    }
+
+    let result = "Department-wise Count:<br>";
+
+    for (let dept in deptCount) {
+        result += dept + ": " + deptCount[dept] + "<br>";
+    }
+
+    document.getElementById("output").innerHTML = result;
+}
+
+// 5. Count Vowels in Student Names
+function vowelCount() {
+    let vowels = "aeiouAEIOU";
+    let count = 0;
+
+    for (let student of students) {
+        for (let char of student.name) {
+            if (vowels.includes(char)) {
+                count++;
+            }
+        }
+    }
+
+    document.getElementById("output").innerHTML =
+        "Total Vowels in Names: " + count;
+}
+
+</script>
+
+</body>
+</html>

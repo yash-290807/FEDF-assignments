@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Library Books</h2>
+<div id="output"></div>
+
+<script>
+const books = [
+    {
+        title: "Harry Potter",
+        author: "J.K. Rowling",
+        price: 800,
+        discount: 20
+    },
+    {
+        title: "Atomic Habits",
+        author: "James Clear",
+        price: 1000,
+        discount: 30
+    }
+];
+
+let result = "";
+
+books.forEach(book => {
+    let finalPrice = book.price - (book.price * book.discount / 100);
+
+    result += `
+    <b>Title:</b> ${book.title}<br>
+    <b>Author:</b> ${book.author}<br>
+    <b>Final Price:</b> ₹${finalPrice}<hr>`;
+});
+
+document.getElementById("output").innerHTML = result;
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Shopping Cart</h2>
+<button onclick="loadCart()">Load Cart</button>
+<div id="output"></div>
+
+<script>
+const cart = [
+    { product: "Laptop", price: 50000 },
+    { product: "Mouse", price: 500 },
+    { product: "Keyboard", price: 1500 },
+    { product: "Headphones", price: 2000 }
+];
+
+function loadCart() {
+    let total = 0;
+    let result = "";
+
+    cart.forEach(item => {
+        result += `Product: ${item.product}, Price: ${item.price}<br>`;
+        total += item.price;
+    });
+
+    result += `<h3>Total Price: ₹${total}</h3>`;
+    document.getElementById("output").innerHTML = result;
+}
+</script>
+</body>
+</html>
