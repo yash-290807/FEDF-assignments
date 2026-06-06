@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Library Management System</title>
+</head>
+<body>
+
+  <h2>Smart Library Management System</h2>
+
+  <!-- Buttons for Event Handling -->
+  <button onclick="displayBooks()">Display Books</button>
+  <button onclick="totalValue()">Total Inventory Value</button>
+  <button onclick="filterBooks()">Filter Books (>500)</button>
+  <button onclick="categoryCount()">Category Count</button>
+  <button onclick="countVowels()">Count Vowels</button>
+
+  <h3>Output:</h3>
+  <div id="output"></div>
+
+<script>
+
+// Book Data
+const books = [
+  { id: 1, title: "JavaScript Basics", author: "John", price: 600, quantity: 2, category: "Programming" },
+  { id: 2, title: "Python Guide", author: "Alice", price: 450, quantity: 3, category: "Programming" },
+  { id: 3, title: "Data Science", author: "Bob", price: 800, quantity: 1, category: "Data" },
+  { id: 4, title: "English Grammar", author: "Smith", price: 300, quantity: 4, category: "Language" }
+];
+
+// 1. Display Book Details
+function displayBooks() {
+  let result = "";
+  for (let book of books) {
+    for (let key in book) {
+      result += key + ": " + book[key] + "<br>";
+    }
+    result += "<hr>";
+  }
+  document.getElementById("output").innerHTML = result;
+}
+
+// 2. Total Inventory Value
+function totalValue() {
+  let total = 0;
+  for (let book of books) {
+    total += book.price * book.quantity;
+  }
+  document.getElementById("output").innerHTML = "Total Inventory Value: " + total;
+}
+
+// 3. Filter Books by Price
+function filterBooks() {
+  let result = "Books with price > 500:<br>";
+  for (let book of books) {
+    if (book.price > 500) {
+      result += book.title + "<br>";
+    }
+  }
+  document.getElementById("output").innerHTML = result;
+}
+
+// 4. Category-wise Count
+function categoryCount() {
+  let count = {};
+  for (let book of books) {
+    if (count[book.category]) {
+      count[book.category]++;
+    } else {
+      count[book.category] = 1;
+    }
+  }
+
+  let result = "Category Count:<br>";
+  for (let key in count) {
+    result += key + ": " + count[key] + "<br>";
+  }
+
+  document.getElementById("output").innerHTML = result;
+}
+
+// 5. Count Vowels in Titles
+function countVowels() {
+  let count = 0;
+  const vowels = "aeiouAEIOU";
+
+  for (let book of books) {
+    for (let char of book.title) {
+      if (vowels.includes(char)) {
+        count++;
+      }
+    }
+  }
+
+  document.getElementById("output").innerHTML = "Total Vowels in Titles: " + count;
+}
+
+</script>
+
+</body>
+</html>

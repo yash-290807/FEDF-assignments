@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Course Registration System</title>
+</head>
+<body>
+
+<h1>Student Course Registration System</h1>
+
+<button onclick="viewCourses()">View Courses</button>
+<button onclick="registerStudent()">Register Student</button>
+<button onclick="updateRegistration()">Update Registration</button>
+<button onclick="cancelRegistration()">Cancel Registration</button>
+
+<h2 id="message"></h2>
+
+<div id="output"></div>
+
+<script>
+
+// VIEW COURSES
+async function viewCourses() {
+
+    const courses = [
+        {id:1, name:"Java"},
+        {id:2, name:"Python"},
+        {id:3, name:"React"},
+        {id:4, name:"Node"}
+    ];
+
+    let result = "<h2>Course List</h2>";
+
+    courses.forEach(course => {
+
+        result += `
+            <hr>
+            <p><b>ID:</b> ${course.id}</p>
+            <p><b>Name:</b> ${course.name}</p>
+        `;
+    });
+
+    document.getElementById("output").innerHTML = result;
+
+    document.getElementById("message").innerHTML = "";
+}
+
+// REGISTER STUDENT
+async function registerStudent() {
+
+    document.getElementById("message").innerHTML =
+        "Student Registered Successfully";
+
+    document.getElementById("output").innerHTML =
+        `
+        <p>ID: 5</p>
+        <p>Name: Rahul</p>
+        `;
+}
+
+// UPDATE REGISTRATION
+async function updateRegistration() {
+
+    document.getElementById("message").innerHTML =
+        "Registration Updated Successfully";
+
+    document.getElementById("output").innerHTML =
+        `
+        <p>ID: 1</p>
+        <p>Name: Rahul</p>
+        `;
+}
+
+// CANCEL REGISTRATION
+async function cancelRegistration() {
+
+    document.getElementById("message").innerHTML =
+        "Registration Cancelled Successfully";
+
+    document.getElementById("output").innerHTML = "";
+}
+
+</script>
+
+</body>
+</html>
