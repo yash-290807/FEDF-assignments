@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance Tracker</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        button {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Student Attendance Tracker</h2>
+
+    <button onclick="student.markAttendance()">
+        Mark Attendance
+    </button>
+
+    <h3 id="attendance">Attended Classes: 0</h3>
+
+    <script>
+        function attendanceTracker() {
+            let attendanceCount = 0;
+
+            return {
+                markAttendance: function() {
+                    attendanceCount++;
+                    updateDisplay();
+                }
+            };
+
+            function updateDisplay() {
+                document.getElementById("attendance").innerText =
+                    "Attended Classes: " + attendanceCount;
+            }
+        }
+
+        const student = attendanceTracker();
+    </script>
+
+</body>
+</html>
